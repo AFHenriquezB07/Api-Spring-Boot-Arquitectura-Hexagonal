@@ -8,7 +8,9 @@ import com.cursodavinchicoder.product.application.query.getAll.GetAllProductRequ
 import com.cursodavinchicoder.product.application.query.getAll.GetAllProductResponse;
 import com.cursodavinchicoder.product.application.query.getById.GetProductByIdRequest;
 import com.cursodavinchicoder.product.application.query.getById.GetProductByIdResponse;
+import com.cursodavinchicoder.product.infrastructure.api.dto.CreateProductDto;
 import com.cursodavinchicoder.product.infrastructure.api.dto.ProductDto;
+import com.cursodavinchicoder.product.infrastructure.api.dto.UpdateProductDto;
 import com.cursodavinchicoder.product.infrastructure.api.mapper.ProductMapper;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -51,7 +53,7 @@ public class ProductController implements ProductApi {
     }
 
     @PostMapping("/save_product")
-    public ResponseEntity<Void> createProduct(@RequestBody @Valid ProductDto productDto) {
+    public ResponseEntity<Void> createProduct(@ModelAttribute @Valid CreateProductDto productDto) {
 
         CreateProductRequest request = productMapper.mapToCreateProductRequest(productDto);
 
@@ -60,7 +62,7 @@ public class ProductController implements ProductApi {
     }
 
     @PutMapping("/update/product")
-    public ResponseEntity<Void> updateProduct(@RequestBody @Valid ProductDto productDto) {
+    public ResponseEntity<Void> updateProduct(@ModelAttribute @Valid UpdateProductDto productDto) {
 
         UpdateProductRequest request = productMapper.mapToUpdateProductRequest(productDto);
 

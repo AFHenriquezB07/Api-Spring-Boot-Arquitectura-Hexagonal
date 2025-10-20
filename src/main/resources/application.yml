@@ -1,3 +1,9 @@
 spring:
   application:
-  name: spring-boot-web-cero-a-experto
+    name: spring-boot-web-cero-a-experto
+  servlet:
+    multipart: # Esta configuracion es para configurar nuestro servidor de spring boot para nuestro peticion que se va a recibir
+      # Estos valores son los que vienen por defecto pero se puede actucambiar para lo que se necesite
+      max-request-size: 10MB
+      max-file-size: 1MB
+
