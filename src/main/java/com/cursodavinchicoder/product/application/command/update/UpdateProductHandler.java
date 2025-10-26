@@ -3,7 +3,7 @@ package com.cursodavinchicoder.product.application.command.update;
 import com.cursodavinchicoder.common.mediator.RequestHandler;
 import com.cursodavinchicoder.common.util.FileUtils;
 import com.cursodavinchicoder.product.domain.entity.Product;
-import com.cursodavinchicoder.product.domain.port.ProducRepository;
+import com.cursodavinchicoder.product.domain.port.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 public class UpdateProductHandler implements RequestHandler<UpdateProductRequest, Void> {
 
 
-    private final ProducRepository producRepository;
+    private final ProductRepository producRepository;
 
     private final FileUtils fileUtils;
 

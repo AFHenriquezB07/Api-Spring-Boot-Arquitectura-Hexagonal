@@ -5,7 +5,7 @@ import com.cursodavinchicoder.product.domain.entity.Product;
 import java.util.List;
 import java.util.Optional;
 
-public interface ProducRepository {
+public interface ProductRepository {
 
     void upsert(Product product);
 

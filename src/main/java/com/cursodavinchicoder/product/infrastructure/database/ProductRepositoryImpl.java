@@ -1,7 +1,7 @@
 package com.cursodavinchicoder.product.infrastructure.database;
 
 import com.cursodavinchicoder.product.domain.entity.Product;
-import com.cursodavinchicoder.product.domain.port.ProducRepository;
+import com.cursodavinchicoder.product.domain.port.ProductRepository;
 import com.cursodavinchicoder.product.infrastructure.database.entity.ProductEntity;
 import com.cursodavinchicoder.product.infrastructure.database.mapper.ProductEntityMapper;
 import lombok.RequiredArgsConstructor;
@@ -13,7 +13,7 @@ import java.util.Optional;
 
 @Repository
 @RequiredArgsConstructor
-public class ProductRepositoryImpl implements ProducRepository {
+public class ProductRepositoryImpl implements ProductRepository {
 
     private final List<ProductEntity> products = new ArrayList<>();
 

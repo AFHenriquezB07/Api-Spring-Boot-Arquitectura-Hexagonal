@@ -1,7 +1,7 @@
 package com.cursodavinchicoder.product.application.command.delete;
 
 import com.cursodavinchicoder.common.mediator.RequestHandler;
-import com.cursodavinchicoder.product.domain.port.ProducRepository;
+import com.cursodavinchicoder.product.domain.port.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 public class DeleteProductHandler implements RequestHandler<DeleteProductRequest, Void> {
 
 
-    private final ProducRepository producRepository;
+    private final ProductRepository producRepository;
 
     @Override
     public Void handle(DeleteProductRequest request) {

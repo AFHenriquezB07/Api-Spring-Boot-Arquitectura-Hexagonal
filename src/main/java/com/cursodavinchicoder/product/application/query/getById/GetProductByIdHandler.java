@@ -3,7 +3,7 @@ package com.cursodavinchicoder.product.application.query.getById;
 import com.cursodavinchicoder.common.mediator.RequestHandler;
 import com.cursodavinchicoder.product.domain.entity.Product;
 import com.cursodavinchicoder.product.domain.exception.ProductNotFoundException;
-import com.cursodavinchicoder.product.domain.port.ProducRepository;
+import com.cursodavinchicoder.product.domain.port.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 public class GetProductByIdHandler implements RequestHandler<GetProductByIdRequest, GetProductByIdResponse> {
 
 
-    private final ProducRepository producRepository;
+    private final ProductRepository producRepository;
 
     @Override
     public GetProductByIdResponse handle(GetProductByIdRequest request) {
