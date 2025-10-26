@@ -78,4 +78,13 @@ public class ProductController implements ProductApi {
 
         return ResponseEntity.noContent().build();
     }
+
+    // Metodo para probar lo de la asincronia
+    @DeleteMapping("/delete/async/{id}")
+    public ResponseEntity<Void> deleteProductAsync(@PathVariable Long id) {
+
+        mediator.dispatchAsync(new DeleteProductRequest(id));
+
+        return ResponseEntity.accepted().build();
+    }
 }
