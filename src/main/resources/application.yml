@@ -6,4 +6,5 @@ spring:
       # Estos valores son los que vienen por defecto pero se puede actucambiar para lo que se necesite
       max-request-size: 10MB
       max-file-size: 1MB
-
+  cache: #Esta configurcion es para activar el cache en nuestra aplicacion spring boot, la mas utilizadda es de tipo redis para temas empresariales
+    type: simple
