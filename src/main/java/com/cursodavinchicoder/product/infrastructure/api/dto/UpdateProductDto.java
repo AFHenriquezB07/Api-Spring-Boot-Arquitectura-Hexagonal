@@ -18,5 +18,5 @@ public class UpdateProductDto {
     @DecimalMin(value = "0.01", inclusive = false)
     @DecimalMax(value = "999.99", inclusive = false)
     private Double price;
-    public MultipartFile file;
+    private MultipartFile file;
 }

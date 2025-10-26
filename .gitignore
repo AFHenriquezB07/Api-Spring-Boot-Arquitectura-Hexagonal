@@ -31,3 +31,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Carpeta de donse se suben la imagenes ##
+uploads/products

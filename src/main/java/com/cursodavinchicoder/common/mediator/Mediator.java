@@ -1,5 +1,6 @@
 package com.cursodavinchicoder.common.mediator;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 
@@ -9,6 +10,7 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 @Component
+@Slf4j
 public class Mediator {
 
     Map<? extends Class<?>, RequestHandler<?, ?>> requestHandlerMap;
@@ -29,6 +31,7 @@ public class Mediator {
         RequestHandler<T, R> requestHandler = (RequestHandler<T, R>) requestHandlerMap.get(request.getClass());
 
         if (requestHandler == null) {
+            log.error("RequestHandler not found for request {}", request.getClass());
             throw new RuntimeException("No handler found for request type: " + request.getClass());
         }
 

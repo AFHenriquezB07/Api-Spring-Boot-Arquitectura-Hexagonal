@@ -13,6 +13,7 @@ public class FixProductsPriceSchedule {
 
     private final ProductRepository productRepository;
 
+    //Con esta anotacion hacemos que spring boot ejecute las tareas que nosotros queremos que se ejecuten en un tiempo determinado
     @Scheduled(fixedRate = 5000)
     public void fixProductsPrice() {
         log.info("Fixing products price schedule...");

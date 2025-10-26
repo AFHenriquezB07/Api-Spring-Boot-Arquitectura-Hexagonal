@@ -5,10 +5,12 @@ import com.cursodavinchicoder.common.util.FileUtils;
 import com.cursodavinchicoder.product.domain.entity.Product;
 import com.cursodavinchicoder.product.domain.port.ProductRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class CreateProductHandler implements RequestHandler<CreateProductRequest, Void> {
 
 
@@ -18,6 +20,8 @@ public class CreateProductHandler implements RequestHandler<CreateProductRequest
 
     @Override
     public Void handle(CreateProductRequest request) {
+
+        log.info("Creating product {}", request.getId());
 
         String uniqueFileName = fileUtils.saveProductImage(request.getFile());
 
@@ -30,6 +34,9 @@ public class CreateProductHandler implements RequestHandler<CreateProductRequest
                 .build();
 
         producRepository.upsert(product);
+
+        log.info("Product {} has been created", product.getId());
+
         return null;
     }
 
