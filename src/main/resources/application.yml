@@ -12,3 +12,17 @@ spring:
 springdoc: #Esta configuracion es para cuando accedamos a swagger ya este definida
   swagger-ui:
     path: /swagger-ui.html
+
+management: #Configuracion para actuator para que me permita ver muchas mas funcionalidades
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+  metrics:
+    distribution:
+      percentiles-histogram:
+        http.server:
+          requests: true
