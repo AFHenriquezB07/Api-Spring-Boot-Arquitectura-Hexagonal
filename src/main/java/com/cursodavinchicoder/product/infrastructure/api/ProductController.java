@@ -12,6 +12,8 @@ import com.cursodavinchicoder.product.infrastructure.api.dto.CreateProductDto;
 import com.cursodavinchicoder.product.infrastructure.api.dto.ProductDto;
 import com.cursodavinchicoder.product.infrastructure.api.dto.UpdateProductDto;
 import com.cursodavinchicoder.product.infrastructure.api.mapper.ProductMapper;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -23,6 +25,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1")
+@Tag(name = "Product", description = "Product API operations")
 @RequiredArgsConstructor
 @Slf4j
 public class ProductController implements ProductApi {
@@ -31,6 +34,7 @@ public class ProductController implements ProductApi {
 
     private final ProductMapper productMapper;
 
+    @Operation(summary = "Get all products", description = "Get all products")
     @GetMapping("/products/params")
     public ResponseEntity<List<ProductDto>> getAllProduct(@RequestParam(required = false) String pageSize) {
 
@@ -48,6 +52,7 @@ public class ProductController implements ProductApi {
         return ResponseEntity.ok(productDtos);
     }
 
+    @Operation(summary = "Get product by id", description = "Get product by id")
     @GetMapping("/product/{id}")
     public ResponseEntity<ProductDto> getProductById(@PathVariable Long id) {
 
@@ -62,6 +67,7 @@ public class ProductController implements ProductApi {
         return ResponseEntity.ok(productDto);
     }
 
+    @Operation(summary = "Save product", description = "Save product")
     @PostMapping("/save_product")
     public ResponseEntity<Void> createProduct(@ModelAttribute @Valid CreateProductDto productDto) {
 
@@ -76,6 +82,7 @@ public class ProductController implements ProductApi {
         return ResponseEntity.created(URI.create("/api/v1/save_product/".concat(request.getId().toString()))).build();
     }
 
+    @Operation(summary = "Update product", description = "Update product")
     @PutMapping("/update/product")
     public ResponseEntity<Void> updateProduct(@ModelAttribute @Valid UpdateProductDto productDto) {
 
@@ -90,6 +97,7 @@ public class ProductController implements ProductApi {
         return ResponseEntity.noContent().build();
     }
 
+    @Operation(summary = "Delete product", description = "Delete product")
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<Void> deleteProduct(@PathVariable Long id) {
 
@@ -103,6 +111,7 @@ public class ProductController implements ProductApi {
     }
 
     // Metodo para probar lo de la asincronia
+    @Operation(summary = "Delete product ASYNC", description = "Delete product ASYNC")
     @DeleteMapping("/delete/async/{id}")
     public ResponseEntity<Void> deleteProductAsync(@PathVariable Long id) {
 

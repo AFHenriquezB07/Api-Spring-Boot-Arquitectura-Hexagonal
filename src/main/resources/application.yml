@@ -8,3 +8,7 @@ spring:
       max-file-size: 1MB
   cache: #Esta configurcion es para activar el cache en nuestra aplicacion spring boot, la mas utilizadda es de tipo redis para temas empresariales
     type: simple
+
+springdoc: #Esta configuracion es para cuando accedamos a swagger ya este definida
+  swagger-ui:
+    path: /swagger-ui.html
