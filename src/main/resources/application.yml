@@ -1,28 +1,6 @@
 spring:
   application:
     name: spring-boot-web-cero-a-experto
-  servlet:
-    multipart: # Esta configuracion es para configurar nuestro servidor de spring boot para nuestro peticion que se va a recibir
-      # Estos valores son los que vienen por defecto pero se puede actucambiar para lo que se necesite
-      max-request-size: 10MB
-      max-file-size: 1MB
-  cache: #Esta configurcion es para activar el cache en nuestra aplicacion spring boot, la mas utilizadda es de tipo redis para temas empresariales
-    type: simple
-
-springdoc: #Esta configuracion es para cuando accedamos a swagger ya este definida
-  swagger-ui:
-    path: /swagger-ui.html
-
-management: #Configuracion para actuator para que me permita ver muchas mas funcionalidades
-  endpoints:
-    web:
-      exposure:
-        include: "*"
-  endpoint:
-    health:
-      show-details: always
-  metrics:
-    distribution:
-      percentiles-histogram:
-        http.server:
-          requests: true
+  profiles:
+    active: dev
+    #active: ${PROFILE} #Configuracin para cuando se quiera trabajar con variables de entorno

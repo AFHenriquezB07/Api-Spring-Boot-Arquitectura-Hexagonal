@@ -1,0 +1,26 @@
+spring:
+  servlet:
+    multipart: # Esta configuracion es para configurar nuestro servidor de spring boot para nuestro peticion que se va a recibir
+      # Estos valores son los que vienen por defecto pero se puede actucambiar para lo que se necesite
+      max-request-size: 20MB
+      max-file-size: 10MB
+  cache: #Esta configurcion es para activar el cache en nuestra aplicacion spring boot, la mas utilizadda es de tipo redis para temas empresariales
+    type: simple
+
+springdoc: #Esta configuracion es para cuando accedamos a swagger ya este definida
+  swagger-ui:
+    path: /swagger-ui.html
+
+management: #Configuracion para actuator para que me permita ver muchas mas funcionalidades
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+  metrics:
+    distribution:
+      percentiles-histogram:
+        http.server:
+          requests: true
