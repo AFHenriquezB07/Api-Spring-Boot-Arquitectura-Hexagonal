@@ -1,17 +1,4 @@
 spring:
-  datasource:
-    url: jdbc:postgresql://localhost:5432/spring
-    username: postgres
-    password: 12345
-    driver-class-name: org.postgresql.Driver
-  jpa:
-    hibernate:
-      ddl-auto: update
-      naming:
-        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.PostgreSQLDialect
   servlet:
     multipart: # Esta configuracion es para configurar nuestro servidor de spring boot para nuestro peticion que se va a recibir
       # Estos valores son los que vienen por defecto pero se puede actucambiar para lo que se necesite

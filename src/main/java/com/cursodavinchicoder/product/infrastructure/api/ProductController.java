@@ -2,12 +2,14 @@ package com.cursodavinchicoder.product.infrastructure.api;
 
 import com.cursodavinchicoder.common.mediator.Mediator;
 import com.cursodavinchicoder.product.application.command.create.CreateProductRequest;
+import com.cursodavinchicoder.product.application.command.create.CreateProductResponse;
 import com.cursodavinchicoder.product.application.command.delete.DeleteProductRequest;
 import com.cursodavinchicoder.product.application.command.update.UpdateProductRequest;
 import com.cursodavinchicoder.product.application.query.getAll.GetAllProductRequest;
 import com.cursodavinchicoder.product.application.query.getAll.GetAllProductResponse;
 import com.cursodavinchicoder.product.application.query.getById.GetProductByIdRequest;
 import com.cursodavinchicoder.product.application.query.getById.GetProductByIdResponse;
+import com.cursodavinchicoder.product.domain.entity.Product;
 import com.cursodavinchicoder.product.infrastructure.api.dto.CreateProductDto;
 import com.cursodavinchicoder.product.infrastructure.api.dto.ProductDto;
 import com.cursodavinchicoder.product.infrastructure.api.dto.UpdateProductDto;
@@ -71,15 +73,17 @@ public class ProductController implements ProductApi {
     @PostMapping("/save_product")
     public ResponseEntity<Void> createProduct(@ModelAttribute @Valid CreateProductDto productDto) {
 
-        log.info("Creating product {}", productDto.getId());
+        log.info("Creating product");
 
         CreateProductRequest request = productMapper.mapToCreateProductRequest(productDto);
 
-        mediator.dispatch(request);
+        CreateProductResponse response = mediator.dispatch(request);
 
-        log.info("Created product {}", productDto.getId());
+        Product product = response.getProduct();
 
-        return ResponseEntity.created(URI.create("/api/v1/save_product/".concat(request.getId().toString()))).build();
+        log.info("Created product {}", product.getId());
+
+        return ResponseEntity.created(URI.create("/api/v1/save_product/".concat(product.getId().toString()))).build();
     }
 
     @Operation(summary = "Update product", description = "Update product")

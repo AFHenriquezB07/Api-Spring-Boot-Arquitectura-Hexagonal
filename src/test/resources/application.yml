@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: spring-boot-web-cero-a-experto
+  profiles:
+    active: test
+    #active: ${PROFILE} #Configuracin para cuando se quiera trabajar con variables de entorno
